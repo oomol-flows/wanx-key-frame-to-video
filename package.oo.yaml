@@ -1,0 +1,11 @@
+version: 0.0.1
+scripts:
+  # Script executed when the container is first loaded
+  # eg: bootstrap: poetry add pandas
+  bootstrap: |
+    npm install
+    poetry install --no-root
+name: wanx-key-frame-to-video
+displayName: "%wanx-key-frame-to-video%"
+description: "%transform-still-images-into-dynamic-video-animations-with-ai-by%"
+repository: git@github.com:oomol-flows/wanx-key-frame-to-video.git

@@ -1,0 +1,119 @@
+inputs_def:
+  - handle: model
+    description: "AI model for video generation"
+    json_schema:
+      enum:
+        - wan2.2-kf2v-flash
+        - wanx2.1-kf2v-plus
+      ui:options:
+        labels:
+          - "Wan 2.2 KF2V Flash"
+          - "Wanx 2.1 KF2V Plus"
+    value: wan2.2-kf2v-flash
+    nullable: false
+
+  - handle: first_frame_url
+    description: "URL of the starting frame image"
+    json_schema:
+      type: string
+    value: ""
+    nullable: false
+
+  - handle: last_frame_url
+    description: "URL of the ending frame image"
+    json_schema:
+      type: string
+    nullable: false
+
+  - handle: prompt
+    description: "Text description to guide video generation"
+    json_schema:
+      type: string
+      ui:widget: text
+    value: null
+    nullable: true
+
+  - group: Advanced Options
+    collapsed: true
+
+  - handle: negative_prompt
+    description: "Elements to avoid in the generated video"
+    json_schema:
+      type: string
+      ui:widget: text
+    value: null
+    nullable: true
+
+  - handle: resolution
+    description: "Output video resolution quality"
+    json_schema:
+      enum:
+        - 480P
+        - 720P
+        - 1080P
+      ui:options:
+        labels:
+          - "480P"
+          - "720P"
+          - "1080P"
+    value: 720P
+    nullable: false
+
+  - handle: prompt_extend
+    description: "Automatically enhance the prompt with additional details"
+    json_schema:
+      type: boolean
+    value: true
+    nullable: false
+
+  - handle: watermark
+    description: "Include watermark in the generated video"
+    json_schema:
+      type: boolean
+    value: false
+    nullable: false
+
+  - handle: seed
+    description: "Random seed for reproducible results"
+    json_schema:
+      type: number
+    value: null
+    nullable: true
+
+outputs_def:
+  - handle: video_url
+    description: "URL of the generated video file"
+    json_schema:
+      type: string
+    nullable: false
+
+  - group: Details
+    collapsed: true
+
+  - handle: task_id
+    description: "Unique identifier for the generation task"
+    json_schema:
+      type: string
+    nullable: false
+
+  - handle: original_prompt
+    description: "User-provided prompt text"
+    json_schema:
+      type: string
+    nullable: false
+
+  - handle: actual_prompt
+    description: "Enhanced prompt used by the AI model"
+    json_schema:
+      type: string
+    nullable: false
+
+executor:
+  name: python
+  options:
+    entry: __init__.py
+    spawn: false
+
+title: "Wanx Key Frame to Video"
+icon: ":carbon:video:"
+description: "Generates video animation between two keyframe images using AI"

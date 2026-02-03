@@ -1,0 +1,22 @@
+title: "Test Wanx Key Frame to Video"
+description: "Test flow for wanx-kf2v-video task"
+nodes:
+  - node_id: wanx-kf2v-video#1
+    task: self::wanx-kf2v-video
+    inputs_from:
+      - handle: model
+        value: wan2.2-kf2v-flash
+      - handle: first_frame_url
+      - handle: last_frame_url
+      - handle: prompt
+        value:
+      - handle: negative_prompt
+        value: null
+      - handle: resolution
+        value: 720P
+      - handle: prompt_extend
+        value: true
+      - handle: watermark
+        value: false
+      - handle: seed
+        value: null
