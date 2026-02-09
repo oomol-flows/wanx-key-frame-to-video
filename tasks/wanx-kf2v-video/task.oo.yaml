@@ -16,6 +16,7 @@ inputs_def:
     description: "URL of the starting frame image"
     json_schema:
       type: string
+      format: uri
     value: ""
     nullable: false
 
@@ -23,6 +24,7 @@ inputs_def:
     description: "URL of the ending frame image"
     json_schema:
       type: string
+      format: uri
     nullable: false
 
   - handle: prompt
@@ -30,7 +32,7 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: text
-    value: null
+    value:
     nullable: true
 
   - group: Advanced Options
@@ -41,7 +43,7 @@ inputs_def:
     json_schema:
       type: string
       ui:widget: text
-    value: null
+    value:
     nullable: true
 
   - handle: resolution
@@ -77,7 +79,7 @@ inputs_def:
     description: "Random seed for reproducible results"
     json_schema:
       type: number
-    value: null
+    value:
     nullable: true
 
 outputs_def:
@@ -85,10 +87,11 @@ outputs_def:
     description: "URL of the generated video file"
     json_schema:
       type: string
+      format: uri
     nullable: false
 
   - group: Details
-    collapsed: true
+    collapsed: false
 
   - handle: task_id
     description: "Unique identifier for the generation task"
