@@ -1,17 +1,12 @@
 title: "Test Wanx Key Frame to Video"
 description: "Test flow for wanx-kf2v-video task"
 nodes:
-  - node_id: wanx-kf2v-video#1
-    task: self::wanx-kf2v-video
+  - node_id: flow-1#1
+    title: "Test Wanx Key Frame to Video #1"
+    subflow: self::wanx-kf2v-video-generate
     inputs_from:
-      - handle: model
-        value: wan2.2-kf2v-flash
-      - handle: first_frame_url
-      - handle: last_frame_url
-      - handle: prompt
-        value:
       - handle: negative_prompt
-        value: null
+        value:
       - handle: resolution
         value: 720P
       - handle: prompt_extend
@@ -19,4 +14,12 @@ nodes:
       - handle: watermark
         value: false
       - handle: seed
-        value: null
+        value:
+      - handle: model
+        value: wan2.2-kf2v-flash
+      - handle: first_frame_url
+        value: https://cloud-storage.oomol.com/users/019343aa-c609-7498-b541-906f2860a1e2/chat-uploads/2026-03-14/bhilrlyqo9ba-WFzP3LncgAYyIavJpxFb4_jHAXKYGG.png
+      - handle: last_frame_url
+        value: https://cloud-storage.oomol.com/users/019343aa-c609-7498-b541-906f2860a1e2/task-outputs/2026-03-14/ilr-4s7-n55j-c6sgLOl-JEr6_mP-YhuWR_PuW40qzR.png
+      - handle: prompt
+        value:

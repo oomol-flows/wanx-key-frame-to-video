@@ -1,0 +1,204 @@
+title: Test Wanx Key Frame to Video
+description: Test flow for wanx-kf2v-video task
+nodes:
+  - node_id: wanx-kf2v-video#1
+    task: self::wanx-kf2v-video
+    inputs_from:
+      - handle: model
+        value: wan2.2-kf2v-flash
+        from_flow:
+          - input_handle: model
+      - handle: first_frame_url
+        from_flow:
+          - input_handle: first_frame_url
+      - handle: last_frame_url
+        from_flow:
+          - input_handle: last_frame_url
+      - handle: prompt
+        value: null
+        from_flow:
+          - input_handle: prompt
+      - handle: negative_prompt
+        value: null
+        from_flow:
+          - input_handle: negative_prompt
+      - handle: resolution
+        value: 720P
+        from_flow:
+          - input_handle: resolution
+      - handle: prompt_extend
+        value: true
+        from_flow:
+          - input_handle: prompt_extend
+      - handle: watermark
+        value: false
+        from_flow:
+          - input_handle: watermark
+      - handle: seed
+        value: null
+        from_flow:
+          - input_handle: seed
+  - node_id: url2file#1
+    title: "URL to file #1"
+    inputs_from:
+      - handle: url
+        from_node:
+          - node_id: wanx-kf2v-video#1
+            output_handle: video_url
+      - handle: saved_folder
+        value: null
+      - handle: ensure_folder
+        value: false
+      - handle: file_head
+        value: null
+      - handle: if_existing
+        value: override
+      - handle: threads_count
+        value: 1
+      - handle: headers
+        value:
+          {}
+      - handle: cookies
+        value:
+          {}
+      - handle: window_width
+        value: 7
+      - handle: failure_ladder
+        value:
+          - 5
+      - handle: min_segment_length
+        value: 1048576
+      - handle: once_fetch_size
+        value: 16384
+      - handle: timeout
+        value: 30
+      - handle: retry_times
+        value: 0
+      - handle: retry_sleep
+        value: 0
+    subflow: downloader::url2file
+inputs_def:
+  - handle: model
+    json_schema:
+      enum:
+        - wan2.2-kf2v-flash
+        - wanx2.1-kf2v-plus
+      ui:options:
+        labels:
+          - Wan 2.2 KF2V Flash
+          - Wanx 2.1 KF2V Plus
+    nullable: false
+    description: AI model for video generation
+    value: wan2.2-kf2v-flash
+    executor_name: python
+  - handle: first_frame_url
+    json_schema:
+      type: string
+      format: uri
+    nullable: false
+    description: URL of the starting frame image
+    executor_name: python
+  - handle: last_frame_url
+    json_schema:
+      type: string
+      format: uri
+    nullable: false
+    description: URL of the ending frame image
+    executor_name: python
+  - handle: prompt
+    json_schema:
+      type: string
+      ui:widget: text
+    nullable: true
+    description: Text description to guide video generation
+    value:
+    executor_name: python
+  - group: Advanced Options
+  - handle: negative_prompt
+    json_schema:
+      type: string
+      ui:widget: text
+    nullable: true
+    description: Elements to avoid in the generated video
+    value:
+    executor_name: python
+  - handle: resolution
+    json_schema:
+      enum:
+        - 480P
+        - 720P
+        - 1080P
+      ui:options:
+        labels:
+          - 480P
+          - 720P
+          - 1080P
+    nullable: false
+    description: Output video resolution quality
+    value: 720P
+    executor_name: python
+  - handle: prompt_extend
+    json_schema:
+      type: boolean
+    nullable: false
+    description: Automatically enhance the prompt with additional details
+    value: true
+    executor_name: python
+  - handle: watermark
+    json_schema:
+      type: boolean
+    nullable: false
+    description: Include watermark in the generated video
+    value: false
+    executor_name: python
+  - handle: seed
+    json_schema:
+      type: number
+    nullable: true
+    description: Random seed for reproducible results
+    value:
+    executor_name: python
+outputs_def:
+  - handle: file
+    json_schema:
+      type: string
+      ui:widget: save
+    nullable: false
+    description: Path of the downloaded file
+    executor_name: python
+  - group: Details
+  - handle: task_id
+    json_schema:
+      type: string
+    nullable: false
+    description: Unique identifier for the generation task
+    executor_name: python
+  - handle: original_prompt
+    json_schema:
+      type: string
+    nullable: false
+    description: User-provided prompt text
+    executor_name: python
+  - handle: actual_prompt
+    json_schema:
+      type: string
+    nullable: false
+    description: Enhanced prompt used by the AI model
+    executor_name: python
+outputs_from:
+  - handle: file
+    from_node:
+      - node_id: url2file#1
+        output_handle: file
+  - handle: task_id
+    from_node:
+      - node_id: wanx-kf2v-video#1
+        output_handle: task_id
+  - handle: original_prompt
+    from_node:
+      - node_id: wanx-kf2v-video#1
+        output_handle: original_prompt
+  - handle: actual_prompt
+    from_node:
+      - node_id: wanx-kf2v-video#1
+        output_handle: actual_prompt

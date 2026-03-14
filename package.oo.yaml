@@ -1,4 +1,4 @@
-version: 0.0.4
+version: 0.0.5
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
@@ -9,5 +9,7 @@ name: wanx-key-frame-to-video
 displayName: "%wanx-key-frame-to-video%"
 description: "%transform-still-images-into-dynamic-video-animations-with-ai-by%"
 repository: https://github.com/oomol-flows/wanx-key-frame-to-video.git
-releaseNotes: "fix: icon"
+releaseNotes: "fix: output file not url"
 icon: ./icon.png
+dependencies:
+  downloader: 0.1.5

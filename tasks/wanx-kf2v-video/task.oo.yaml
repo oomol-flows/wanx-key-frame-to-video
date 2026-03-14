@@ -36,7 +36,7 @@ inputs_def:
     nullable: true
 
   - group: Advanced Options
-    collapsed: true
+    collapsed: false
 
   - handle: negative_prompt
     description: "Elements to avoid in the generated video"
@@ -55,9 +55,9 @@ inputs_def:
         - 1080P
       ui:options:
         labels:
-          - "480P"
-          - "720P"
-          - "1080P"
+          - 480P
+          - 720P
+          - 1080P
     value: 720P
     nullable: false
 
@@ -76,7 +76,7 @@ inputs_def:
     nullable: false
 
   - handle: seed
-    description: "Random seed for reproducible results"
+    description: Random seed for reproducible results
     json_schema:
       type: number
     value:

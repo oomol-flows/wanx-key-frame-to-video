@@ -1,0 +1,47 @@
+{
+  "nodes": {
+    "wanx-kf2v-video#1": {
+      "contentWidth": 566.23046875,
+      "rfNode": {
+        "position": {
+          "x": -70.53800056555055,
+          "y": 62.305149925699254
+        }
+      }
+    },
+    "url2file#1": {
+      "rfNode": {
+        "position": {
+          "x": 541.1083506796045,
+          "y": 62.305149925699254
+        }
+      },
+      "sections": {
+        "inputs": {
+          "groupCollapsed": {
+            "Strategy": true,
+            "Connection": true
+          }
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": -558.1886334203923,
+          "y": 91.02517389195938
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 1014.2429635802937,
+          "y": 338.82327911690743
+        }
+      }
+    }
+  }
+}
