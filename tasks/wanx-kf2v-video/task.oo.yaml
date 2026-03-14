@@ -120,3 +120,4 @@ executor:
 title: "Wanx Key Frame to Video"
 icon: ":carbon:video:"
 description: "Generates video animation between two keyframe images using AI"
+private: true

@@ -1,4 +1,4 @@
-version: 0.0.5
+version: 0.0.6
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: poetry add pandas
